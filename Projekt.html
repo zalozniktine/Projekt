@@ -37,7 +37,7 @@
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    
+            const { ipcRenderer } = require('electron')
             new Vue({
                 el: "#root",
                 data: () => ({
@@ -49,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         var USERNAME = 'bine'
                         var PASSWORD = 'password'
                         if(this.username ==  USERNAME && this.password == PASSWORD) {
-                            alert("uspesna prijava")
+                            ipcRenderer.send('login')
+                            
                         } 
                     }
                 }
