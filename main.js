@@ -14,7 +14,7 @@ function createWindow() {
     });
 
     win.setMenu(null);
-    win.loadFile('./test.html')
+    win.loadFile('./Projekt.html')
 }
 
 ipcMain.on('request-app-close', event=> {
