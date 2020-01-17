@@ -14,7 +14,7 @@ function createWindow() {
     });
 
     win.setMenu(null);
-    win.loadFile('./Projekt.html')
+    win.loadFile('./posamezna-knjiga.html')
 }
 
 ipcMain.on('request-app-close', event=> {
