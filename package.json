@@ -1,0 +1,25 @@
+{
+  "name": "booksite",
+  "version": "1.0.0",
+  "description": "stran ",
+  "main": "index.js",
+  "dependencies": {
+    "electron": "^7.1.9",
+    "electron-debug": "^3.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zalozniktine/Projekt.git"
+  },
+  "author": "Žak, Urh, Tine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zalozniktine/Projekt/issues"
+  },
+  "homepage": "https://github.com/zalozniktine/Projekt#readme"
+}
