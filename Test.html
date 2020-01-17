@@ -15,15 +15,19 @@
 <body>
 
 
-    <div id="root"></div>
+    
 
     <div class="ui menu">
-        <a href="http:/www.google.com" class="item">Google</a>
+        <div id="root">
+            <a v-on:click='openView()' href="http:/www.google.com" class="item">Google</a>
+        </div>
         <a href="#kn" class="item">O knjižnici</a>
         <a href="https://www.google.com/maps/place/Mestna+knji%C5%BEnica+Kranj/@46.2421268,14.3563489,15z/data=!4m5!3m4!1s0x0:0x344ae8f80cf26b77!8m2!3d46.2421268!4d14.3563489"
             class="item">Kje se nahajamo</a>
         <a href="#kkn" class="item">Kontakt</a>
         <a href="#knm" class="item">Lokacije</a>
+        <a href="https://plus.si.cobiss.net/opac7/bib/search?db=sikkr" class="item">COBISS+</a>
+       
 
     </div>
     <h1 style="font-size: 50px; float: left">Mestna knjižnica Kranj</h1>
@@ -118,6 +122,22 @@
 
     <hr />
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+            const { ipcRenderer } = require('electron')
+            new Vue({
+                el: "#root",
+                data: () => ({
+                }),
+                methods: {
+                    openView() {
+                        ipcRenderer.send('book-view')
+                    }
+                }
+
+            })
+        })
+    </script>
 
 
 
