@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,27 +12,81 @@
     <title>Document</title>
 </head>
 
-<body style="padding: 20px;">
-    <div class="ui card" style="width: 100%; height: 90vh; padding: 2%">
-        <div class="image" >
-          <img style="height: 60vh !important" src="https://zupanet.hr/wp-content/uploads/2017/12/knjiga-990x990.jpg">
+<body>
+    <div id="root" style="padding: 2%">
+        <h1 style="float: left">BOOK App</h1>
+        <button style="float: right" v-on:click="close()" class="circular red ui icon button">
+            <i class="close icon"></i>
+        </button>
+        <button style="float: right" v-if="isInDepthViev == true" v-on:click="back()" class="circular ui icon button secondary">
+        <i class="angle double left icon"></i>
+        </button>
+        <br style="clear: both;" />
+        <hr />
+        <div v-if="isInDepthViev == false">
+            <div v-for="(item, index) in seznam" style="float:left; width: 48%; margin: 10px;">
+                <div v-on:click="showSingle(index)" class="ui card" style="width: 100%">
+                    <div class="image">
+                        <img style="height: 45vh; " src="https://i1.sndcdn.com/avatars-000696023794-higtf8-t500x500.jpg">
+                      
+                    </div>
+                    <div class="content">
+                        <a class="header" style="white-space: nowrap; overflow: hidden;">{{ item["title"] }}</a>
+                        <div class="meta">
+                            <h1 style="float: left">URH</h1>
+                            <span class="date"></span>
+                        </div>
+                        <div class="description">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="content">
-          <a class="header">Kristy</a>
-          <div class="meta">
-            <span class="date">Joined in 2013</span>
-          </div>
-          <div class="description">
-            Kristy is an art director living in New York.
-          </div>
+        <div v-else>
+            <iframe style="width: 100%; height: 80vh" v-bind:src="seznam[singleIndex]['url']">
+            </iframe>
         </div>
-        <div class="extra content">
-          <a>
-            <i class="user icon"></i>
-            22 Friends
-          </a>
-        </div>
-      </div>
-    
+    </div>
+
+    <script>
+        const { ipcRenderer } = require('electron');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            new Vue({
+                el: "#root",
+                data: () => ({
+                    seznam: [],
+                    singleIndex: null,
+                    isInDepthViev: false
+                }),
+                created: function () {
+                    var url = 'https://jsonplaceholder.typicode.com/posts';
+                    var req = new Request(url);
+                    fetch(req)
+                        .then(res => res.json())
+                        .then(result => {
+                            this.seznam = result
+                            console.log(result);
+                        })
+                },
+                methods: {
+
+                    close() {
+                        ipcRenderer.send('request-app-close')
+                    },
+                    showSingle(index) {
+                        this.isInDepthViev = true;
+                        this.singleIndex = index;
+                    },
+                    back() {
+                        this.isInDepthViev = false;
+                    }
+
+                }
+            });
+        });
+    </script>
+
 </body>
+
 </html>
