@@ -6,7 +6,8 @@ require('electron-debug')({
 
 function createWindow() {
     var win = new BrowserWindow({
-        fullscreen: true,
+        width: 500,
+        height: 500, 
         icon: './images.png',
         webPreferences: {
             nodeIntegration: true
