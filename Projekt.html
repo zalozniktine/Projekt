@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,15 +10,55 @@
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
     <title>Document</title>
-</head>
-<div id="root" style="padding: 2%">
-    <h1 style="float: left">News App</h1>
-    <button style="float: right" v-on:click="close()" class="circular ui icon button red">
-        <i class="close icon"></i>
-    </button>
-    <br style="clear: both;" />
-    <hr />
-<body>
-    
+
+<body
+    style="background-image: url(http://cdn.shopify.com/s/files/1/0879/0542/products/pc297_a197be28-7c09-403a-82dc-82dfca8ac4ef_1200x1200.jpg?v=1513994462);">
 </body>
+</head>
+<div id="root">
+    <div class="login-page">
+        <div class="two fields">
+            <div style="padding-top: 30vh ;">
+                <div style="text-align:center;">
+                    <b style="margin-top: 100px; line-height: 50px; background-color: coral;;">Login Page</b>
+                    <br>
+                    <input v-model='username' type="width: 20px; float: left; "
+                        style="border-radius: 10px; padding: 10px; border-color: black" placeholder="Username"
+                        type="text">
+                    <input v-model='password'
+                        style="border-radius: 10px; padding: 10px; border-color: black;" placeholder="Password"
+                        type="password">
+                </div>
+            </div>
+        </div>
+    </div>
+<div v-on:click="login()" style="width: 40% !important; position: absolute !important; left: 30% !important; margin-top: 20px"  class="ui submit button">login</div>
+</div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    
+            new Vue({
+                el: "#root",
+                data: () => ({
+                    username: '',
+                    password: ''
+                }),
+                methods: {
+                    login() {
+                        var USERNAME = 'bine'
+                        var PASSWORD = 'password'
+                        if(this.username ==  USERNAME && this.password == PASSWORD) {
+                            alert("uspesna prijava")
+                        } 
+                    }
+                }
+
+            })
+        })
+</script>
+<body>
+
+</body>
+
 </html>
